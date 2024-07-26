@@ -1,0 +1,134 @@
+<template>
+    <div class="background-container">
+        <div class="main-container">
+            <img src={logoUrl} alt="Logo" class="logo">
+            <div class="form-container">
+                <h1 class="slds-text-heading_large slds-text-align_center">Create An Account</h1>
+                <template if:true={isProviderStep}>
+                    <h2>Provider Information</h2>
+                    <div class="custom-input">
+                        <lightning-input label="First Name:" required value={formData.FirstName} onchange={handleInputChange} data-field="FirstName" variant="label-inline"></lightning-input>
+                    </div>
+                    <div class="custom-input">
+                        <lightning-input label="Last Name:" required value={formData.LastName} onchange={handleInputChange} data-field="LastName" variant="label-inline"></lightning-input>
+                    </div>
+                    <div class="custom-input">
+                        <lightning-input label="NPI:" required value={formData.NPI} onchange={handleInputChange} data-field="NPI" variant="label-inline"></lightning-input>
+                    </div>
+                    <div class="custom-input">
+                        <lightning-input label="Email:" type="email" required value={formData.Email} onchange={handleInputChange} data-field="Email" variant="label-inline"></lightning-input>
+                    </div>
+                    <div class="custom-input">
+                        <lightning-input label="Cell Phone:" type="tel" value={formData.CellPhone} onchange={handleInputChange} data-field="CellPhone" variant="label-inline"></lightning-input>
+                    </div>
+                    <div class="button-container">
+                        <lightning-button label="Next" data-id="nextButton" onclick={handleClick} class="custom-button slds-m-around_medium" variant="brand"></lightning-button>
+                    </div>
+                </template>
+
+                <template if:true={isPracticeStep}>
+                    <h2>Practice Information</h2>
+                    <div class="custom-input">
+                        <lightning-input label="Practice Name:" required value={formData.PracticeName} onchange={handleInputChange} data-field="PracticeName" variant="label-inline"></lightning-input>
+                    </div>
+                    <div class="custom-input">
+                        <lightning-input label="Practice Phone:" type="tel" required value={formData.PracticePhone} onchange={handleInputChange} data-field="PracticePhone" variant="label-inline"></lightning-input>
+                    </div>
+                    <div class="custom-input">
+                        <lightning-input label="Practice Email:" type="email" required value={formData.PracticeEmail} onchange={handleInputChange} data-field="PracticeEmail" variant="label-inline"></lightning-input>
+                    </div>
+                    <div>
+                        <lightning-input-address
+                        show-address-lookup
+                        address-label="Address:"
+                        street={formData.StreetAddress}
+                        city={formData.City}
+                        country={formData.Country}
+                        province={formData.State}
+                        postal-code={formData.Zip}
+                        variant="label-inline"
+                        onchange={handleAddressChange}
+                        address-lookup-placeholder="Search Address"
+                        street-placeholder="Street Address"
+                        city-placeholder="City"
+                        province-placeholder="State"
+                        country-placeholder="Country"
+                        postal-code-placeholder="Zip"
+                    >
+                        </lightning-input-address>
+                    </div>
+                    <div class="button-container">
+                        <lightning-button label="Previous" data-id="previousButton" onclick={handleClick} class="custom-button slds-m-around_medium" variant="brand"></lightning-button>  
+                        <lightning-button label="Create Account" data-id="submitButton" onclick={handleClick} class="custom-button slds-m-around_medium" variant="brand"></lightning-button>  
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+</template>
+
+<!--<template>
+    <div class="background-container">
+        <div class="main-container">
+            <img src={logoUrl} alt="Logo" class="logo">
+            <div class="form-container">
+                <h1 class="slds-text-heading_large slds-text-align_center">Create An Account</h1>
+                <template if:true={isProviderStep}>
+                    <h2>Provider Information</h2>
+                    <div class="custom-input">
+                        <lightning-input label="First Name:" required onchange={handleInputChange} data-field="FirstName" variant="label-inline"></lightning-input>
+                    </div>
+                    <div class="custom-input">
+                        <lightning-input label="Last Name:" required onchange={handleInputChange} data-field="LastName" variant="label-inline"></lightning-input>
+                    </div>
+                    <div class="custom-input">
+                        <lightning-input label="NPI:" required onchange={handleInputChange} data-field="NPI" variant="label-inline"></lightning-input>
+                    </div>
+                    <div class="custom-input">
+                        <lightning-input label="Email:" type="email" required onchange={handleInputChange} data-field="Email" variant="label-inline"></lightning-input>
+                    </div>
+                    <div class="custom-input">
+                        <lightning-input label="Cell Phone:" type="tel" onchange={handleInputChange} data-field="CellPhone" variant="label-inline" ></lightning-input>
+                    </div>
+                    <div class="button-container">
+                        <lightning-button label="Next" data-id="nextButton" onclick={handleClick} class="custom-button slds-m-around_medium" variant="brand"></lightning-button>
+                    </div>
+                </template>
+                
+                <template if:true={isPracticeStep}>
+                    <h2>Practice Information</h2>
+                    <div class="custom-input">
+                        <lightning-input label="Practice Name:" required onchange={handleInputChange} data-field="PracticeName" variant="label-inline"></lightning-input>
+                    </div>
+                    <div class="custom-input">
+                        <lightning-input label="Practice Phone:" type="tel" required onchange={handleInputChange} data-field="PracticePhone" variant="label-inline"></lightning-input>
+                    </div>
+                    <div class="custom-input">
+                        <lightning-input label="Practice Email:" type="email" required onchange={handleInputChange} data-field="PracticeEmail" variant="label-inline"></lightning-input>
+                    </div>-->
+                    <!--<div class="custom-input">
+                        <lightning-input label="Fax Number" type="tel" onchange={handleInputChange} data-field="FaxNumber" variant="label-inline"></lightning-input>
+                    </div>-->
+                    <!--<div>
+                        <lightning-input-address
+                            show-address-lookup
+                            address-label="Address:"
+                            street="Street Address"
+                            city="City"
+                            country="Country"
+                            province="State"
+                            postal-code="Zip"
+                            variant="label-inline"
+                            onchange={handleAddressChange}
+                        >
+                        </lightning-input-address>
+                    </div>
+                    <div class="button-container">
+                        <lightning-button label="Previous" data-id="previousButton" onclick={handleClick} class="custom-button slds-m-around_medium" variant="brand"></lightning-button>  
+                        <lightning-button label="Create Account" data-id="submitButton" onclick={handleClick} class="custom-button slds-m-around_medium" variant="brand"></lightning-button>  
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+</template>-->
